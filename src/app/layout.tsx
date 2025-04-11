@@ -2,7 +2,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar"
 import {logoFont} from "@/components/Fonts"
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 import "./globals.css";
 
@@ -28,19 +28,14 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
     <Navbar/>
-    <AnimatePresence mode="wait">
       <motion.div
           key={pathname}
           initial={{opacity: 0}}
           animate={{opacity: 1}}
           exit={{opacity: 0}}
           transition={{duration: 0.3}}
-      >
-
-
-        {children}
+      >{children}
       </motion.div>
-    </AnimatePresence>
     <footer className="text-center py-6 text-sm text-gray-500 border-t border-zinc-800">
       © 2025 CoolPotOS. MIT Licensed. Built by plos-clan
     </footer>

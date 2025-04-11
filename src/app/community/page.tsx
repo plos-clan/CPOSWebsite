@@ -1,92 +1,7 @@
 "use client"
 import Image from "next/image"
-import {motion} from "framer-motion";
 import CodeBlock from '@/components/CodeBlock'
 import Alert from '@/components/Alert'
-
-const coreMembers = [
-    {
-        name: "Mdr-C-Tutorial",
-        avatar: "/avatars/mdr_c_tutorial.png",
-        bio: "梦猫大典社区的成员参与进 CoolPotOS 的各种模块贡献",
-    },
-    {
-        name: "Plos-clan",
-        avatar: "/avatars/plos_clan.jpg",
-        bio: "CoolPotOS 项目隶属于 plos-clan, 是本项目主要的贡献社区",
-    },
-    {
-        name: "ViudiraTech",
-        avatar: "/avatars/viudira_tech.jpg",
-        bio: "负责驱动部分的调优和编写, 是除plos-clan外最先贡献的组织",
-    },
-]
-
-const contributors_kernel = [
-    {
-        avatar: "/avatars/xiaoyi1212.jpg",
-        url: "https://github.com/xiaoyi1212",
-    }, {
-        avatar: "/avatars/vinbe_wan.jpg",
-        url: "https://github.com/VinbeWan",
-    }, {
-        avatar: "/avatars/yuemingruoan.jpg",
-        url: "https://github.com/yuemingruoan",
-    }, {
-        avatar: "/avatars/copi143.png",
-        url: "https://github.com/copi143",
-    }, {
-        avatar: "/avatars/wenxuanjun.jpg",
-        url: "https://github.com/wenxuanjun",
-    }, {
-        avatar: "/avatars/a4_tacks.png",
-        url: "https://github.com/A4-Tacks",
-    }, {
-        avatar: "/avatars/microfish.png",
-        url: "https://github.com/FengHeting",
-    }, {
-        avatar: "/avatars/black.jpg",
-        url: "https://github.com/lihanrui2913",
-    }, {
-        avatar: "/avatars/min0911Y.jpg",
-        url: "https://github.com/min0911Y",
-    }, {
-        avatar: "/avatars/suhuajun.jpg",
-        url: "https://github.com/suhuajun-github",
-    }, {
-        avatar: "/avatars/minsecrus.jpg",
-        url: "https://github.com/Minsecrus",
-    },
-]
-
-const contributors_docs = [
-    {
-        avatar: "/avatars/qt_little_xu.png",
-        url: "https://github.com/QtLittleXu",
-    }, {
-        avatar: "/avatars/onion108.png",
-        url: "https://github.com/onion108",
-    }, {
-        avatar: "/avatars/fengling0915.jpg",
-        url: "https://github.com/fengling0915",
-    }, {
-        avatar: "/avatars/rho_paper.jpg",
-        url: "https://github.com/RhoPaper",
-    }
-]
-
-const contributors_other = [
-    {
-        avatar: "/avatars/ly_xiang.png",
-        url: "https://github.com/LY-Xiang",
-    }, {
-        avatar: "/avatars/climber_rong.png",
-        url: "https://github.com/CLimber-Rong",
-    }, {
-        avatar: "/avatars/wyf856136.jpg",
-        url: "https://github.com/wyf856136",
-    }
-]
 
 function dedent(str: string) {
     const lines = str.split('\n');
@@ -102,8 +17,92 @@ function dedent(str: string) {
 
 export default function CommunityPage() {
 
+    const coreMembers = [
+        {
+            name: "Mdr-C-Tutorial",
+            avatar: "/avatars/mdr_c_tutorial.png",
+            bio: "梦猫大典社区的成员参与进 CoolPotOS 的各种模块贡献",
+        },
+        {
+            name: "Plos-clan",
+            avatar: "/avatars/plos_clan.jpg",
+            bio: "CoolPotOS 项目隶属于 plos-clan, 是本项目主要的贡献社区",
+        },
+        {
+            name: "ViudiraTech",
+            avatar: "/avatars/viudira_tech.jpg",
+            bio: "负责驱动部分的调优和编写, 是除plos-clan外最先贡献的组织",
+        },
+    ]
+
+    const contributors_kernel = [
+        {
+            avatar: "/avatars/xiaoyi1212.jpg",
+            url: "https://github.com/xiaoyi1212",
+        }, {
+            avatar: "/avatars/vinbe_wan.jpg",
+            url: "https://github.com/VinbeWan",
+        }, {
+            avatar: "/avatars/yuemingruoan.jpg",
+            url: "https://github.com/yuemingruoan",
+        }, {
+            avatar: "/avatars/copi143.png",
+            url: "https://github.com/copi143",
+        }, {
+            avatar: "/avatars/wenxuanjun.jpg",
+            url: "https://github.com/wenxuanjun",
+        }, {
+            avatar: "/avatars/a4_tacks.png",
+            url: "https://github.com/A4-Tacks",
+        }, {
+            avatar: "/avatars/microfish.png",
+            url: "https://github.com/FengHeting",
+        }, {
+            avatar: "/avatars/black.jpg",
+            url: "https://github.com/lihanrui2913",
+        }, {
+            avatar: "/avatars/min0911Y.jpg",
+            url: "https://github.com/min0911Y",
+        }, {
+            avatar: "/avatars/suhuajun.jpg",
+            url: "https://github.com/suhuajun-github",
+        }, {
+            avatar: "/avatars/minsecrus.jpg",
+            url: "https://github.com/Minsecrus",
+        },
+    ]
+
+    const contributors_docs = [
+        {
+            avatar: "/avatars/qt_little_xu.png",
+            url: "https://github.com/QtLittleXu",
+        }, {
+            avatar: "/avatars/onion108.png",
+            url: "https://github.com/onion108",
+        }, {
+            avatar: "/avatars/fengling0915.jpg",
+            url: "https://github.com/fengling0915",
+        }, {
+            avatar: "/avatars/rho_paper.jpg",
+            url: "https://github.com/RhoPaper",
+        }
+    ]
+
+    const contributors_other = [
+        {
+            avatar: "/avatars/ly_xiang.png",
+            url: "https://github.com/LY-Xiang",
+        }, {
+            avatar: "/avatars/climber_rong.png",
+            url: "https://github.com/CLimber-Rong",
+        }, {
+            avatar: "/avatars/wyf856136.jpg",
+            url: "https://github.com/wyf856136",
+        }
+    ]
+
     return (
-        <main className="p-8 text-white pt-32">
+        <main key="community-main" className="p-8 text-white pt-32">
             <div className="max-w-4xl mx-auto">
                 <h1 className="text-center text-3xl font-bold mb-8">社区贡献组织</h1>
 
@@ -112,6 +111,7 @@ export default function CommunityPage() {
                         <div key={member.name}
                              className="bg-neutral-900 p-6 rounded-xl border border-neutral-800 shadow-md text-center">
                             <Image
+                                priority
                                 src={member.avatar}
                                 alt={member.name}
                                 width={96}
@@ -132,6 +132,7 @@ export default function CommunityPage() {
                     {contributors_kernel.map((src, idx) => (
                         <a key={idx} href={src.url}>
                             <Image
+                                priority
                                 key={idx}
                                 src={src.avatar}
                                 alt={`贡献者 ${idx + 1}`}
@@ -151,6 +152,7 @@ export default function CommunityPage() {
                     {contributors_docs.map((src, idx) => (
                         <a key={idx} href={src.url}>
                             <Image
+                                priority
                                 key={idx}
                                 src={src.avatar}
                                 alt={`贡献者 ${idx + 1}`}
@@ -171,6 +173,7 @@ export default function CommunityPage() {
                     {contributors_other.map((src, idx) => (
                         <a key={idx} href={src.url}>
                             <Image
+                                priority
                                 key={idx}
                                 src={src.avatar}
                                 alt={`贡献者 ${idx + 1}`}
@@ -219,12 +222,9 @@ export default function CommunityPage() {
                 </div>
 
                 <div className="max-w-5xl mx-auto text-center">
-                    <motion.h2 className="text-3xl logo-font tracking-wide font-bold mb-8"
-                               initial={{opacity: 0, y: 10}}
-                               animate={{opacity: 1, y: 0}}
-                               transition={{delay: 1, duration: 0.8}}>
+                    <h2 className="text-3xl logo-font tracking-wide font-bold mb-8">
                         How to contribute
-                    </motion.h2>
+                    </h2>
                     <div className="max-w-4xl mx-auto p-3">
                         <Alert type="warning" title="环境注意">
                             CoolPotOS构建需要在 Linux 环境下进行, 如果您是 Windows 请使用 WSL2, MacOS用户请使用虚拟机

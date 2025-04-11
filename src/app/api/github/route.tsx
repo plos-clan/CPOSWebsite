@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server"
 
-export const runtime = 'edge';
-
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN
 const REPO = "xiaoyi1212/CoolPotOS"
 const GITHUB_API_URL = `https://api.github.com/repos/${REPO}`
