@@ -1,11 +1,14 @@
 import { NextResponse } from "next/server"
 
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN
-const REPO = "xiaoyi1212/CoolPotOS"
-const GITHUB_API_URL = `https://api.github.com/repos/${REPO}`
+export const runtime = 'edge';
 
 export async function GET() {
     try {
+
+        const GITHUB_TOKEN = process.env.GITHUB_TOKEN
+        const REPO = "xiaoyi1212/CoolPotOS"
+        const GITHUB_API_URL = `https://api.github.com/repos/${REPO}`
+
         const headers = {
             Authorization: `Bearer ${GITHUB_TOKEN}`,
             "User-Agent": "CoolPotOS-App"
