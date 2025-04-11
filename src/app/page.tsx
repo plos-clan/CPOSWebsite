@@ -1,103 +1,235 @@
-import Image from "next/image";
+"use client"
+import Image from "next/image"
+import { motion, useAnimation } from "framer-motion"
+import { useInView } from "react-intersection-observer"
+import { useEffect } from "react"
+import GitHubStats from "@/components/GitHubStats"
+import VisibilityAnimation from "@/components/VisibilityAnimation";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    const controls = useAnimation()
+    const [ref, inView] = useInView({
+        triggerOnce: false,
+        threshold: 0.2,
+    })
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+    useEffect(() => {
+        if (inView) {
+            controls.start({ opacity: 1, y: 0 })
+        } else {
+            controls.start({ opacity: 0, y: 30 })
+        }
+    }, [inView, controls])
+
+    return (
+        <main className="min-h-screen bg-[#111111] text-white pt-16">
+            <section className="py-17 px-6 text-center">
+                <div className="max-w-3xl mx-auto">
+                    <motion.img src="/icon.png" alt="Logo"
+                                className="w-50 h-50 mx-auto mb-4"
+                                initial={{opacity: 0, y: -30}}
+                                animate={{opacity: 1, y: 0}}
+                                transition={{duration: 0.8, ease: "easeOut"}}/>
+                    <motion.h1 className="text-5xl mb-2 logo-font animation"
+                               initial={{opacity: 0, y: -30}}
+                               animate={{opacity: 1, y: 0}}
+                               transition={{duration: 0.8, ease: "easeOut"}}>
+                        CoolPotOS
+                    </motion.h1>
+                    <motion.p className="text-lg text-gray-400 mb-6 logo-font"
+                              initial={{opacity: 0}}
+                              animate={{opacity: 1}}
+                              transition={{delay: 0.5, duration: 0.8}}>
+                        A simple toy operating system
+                    </motion.p>
+                    <motion.a
+                        href="https://github.com/plos-clan/CoolPotOS"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block bg-white text-black text-sm px-5 py-2.5 rounded-full font-semibold transition hover:bg-gray-200"
+                        initial={{opacity: 0, y: 10}}
+                        animate={{opacity: 1, y: 0}}
+                        transition={{delay: 0.7, duration: 0.8}}
+                    >
+                        View on GitHub
+                    </motion.a>
+                </div>
+            </section>
+
+            <section className="py-24 px-6 bg-[#222222] relative -mt-1">
+                <div className="absolute -top-[80px] left-0 w-full h-24">
+                    <svg viewBox="0 0 1440 320" className="w-full h-full" preserveAspectRatio="none">
+                        <path fill="#1a1a1a" fillOpacity="1">
+                            <animate attributeName="d" dur="10s" repeatCount="indefinite"
+                                     values="
+                                     M0,160 C480,280 960,40 1440,160 L1440,320 L0,320 Z;
+                                     M0,180 C520,100 920,280 1440,180 L1440,320 L0,320 Z;
+                                     M0,160 C480,280 960,40 1440,160 L1440,320 L0,320 Z
+                                     "
+                            />
+                        </path>
+                        <path fill="#1f1f1f" fillOpacity="1">
+                            <animate attributeName="d" dur="8s" repeatCount="indefinite"
+                                     values="
+                                     M0,180 C400,100 1040,240 1440,180 L1440,320 L0,320 Z;
+                                     M0,160 C460,240 980,80 1440,160 L1440,320 L0,320 Z;
+                                     M0,180 C400,100 1040,240 1440,180 L1440,320 L0,320 Z
+                                     "
+                            />
+                        </path>
+                        <path fill="#222222" fillOpacity="1">
+                            <animate attributeName="d" dur="6s" repeatCount="indefinite"
+                                     values="
+                                     M0,192 C480,232 960,128 1440,192 L1440,320 L0,320 Z;
+                                     M0,208 C520,144 920,240 1440,208 L1440,320 L0,320 Z;
+                                     M0,192 C480,232 960,128 1440,192 L1440,320 L0,320 Z
+                                     "
+                            />
+                        </path>
+                    </svg>
+                </div>
+                <div className="max-w-5xl mx-auto text-center">
+                    <motion.h2 className="text-3xl logo-font tracking-wide font-bold mb-8"
+                               initial={{opacity: 0, y: 10}}
+                               animate={{opacity: 1, y: 0}}
+                               transition={{delay: 1, duration: 0.8}}>
+                        Features
+                    </motion.h2>
+                    <div className="grid md:grid-cols-3 gap-8">
+                        <motion.div className="bg-neutral-900 border border-neutral-800 rounded-xl p-6 shadow-md"
+                                    initial={{opacity: 0, y: -30}}
+                                    animate={{opacity: 1, y: 0}}
+                                    transition={{delay: 1.2, duration: 0.8, ease: "easeOut"}}>
+                            <h3 className="text-xl text-center font-semibold mb-2 flex items-center gap-2">
+                                <Image width={20} height={20} src="/community.svg" alt="徽标" className=""/>
+                                社区
+                            </h3>
+                            <p className="text-gray-400 text-start">
+                                隶属于庞大的 plos-clan 社区组织
+                                <br/>
+                                拥有17+贡献者
+                            </p>
+                        </motion.div>
+                        <motion.div className="bg-neutral-900 border border-neutral-800 rounded-xl p-6 shadow-md"
+                                    initial={{opacity: 0, y: -30}}
+                                    animate={{opacity: 1, y: 0}}
+                                    transition={{delay: 1.4, duration: 0.8, ease: "easeOut"}}>
+                            <h3 className="text-xl text-center font-semibold mb-2 flex items-center gap-2">
+                                <Image width={20} height={20} src="/book.svg" alt="徽标" className=""/>
+                                学习
+                            </h3>
+                            <p className="text-gray-400 text-start">
+                                开发初衷为学习性操作系统, 给予初学者一个参考实例
+                            </p>
+                        </motion.div>
+                        <motion.div className="bg-neutral-900 border border-neutral-800 rounded-xl p-6 shadow-md"
+                                    initial={{opacity: 0, y: -30}}
+                                    animate={{opacity: 1, y: 0}}
+                                    transition={{delay: 1.6, duration: 0.8, ease: "easeOut"}}>
+                            <h3 className="text-xl text-center font-semibold mb-2 flex items-center gap-2">
+                                <Image width={20} height={20} src="/contributor.svg" alt="徽标" className=""/>
+                                贡献
+                            </h3>
+                            <p className="text-gray-400 text-start">
+                                欢迎为该项目填补漏洞与增加功能
+                                <br/>
+                                您的支持是我们的动力
+                            </p>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-24 px-6 bg-[#222222] w-full">
+                <div className="max-w-5xl mx-auto text-center w-full">
+                    <motion.h2 className="text-3xl logo-font tracking-wider font-bold mb-8 w-full"
+                               initial={{opacity: 0, y: 10}}
+                               animate={{opacity: 1, y: 0}}
+                               transition={{delay: 1, duration: 0.8}}>
+                        Capabilities
+                    </motion.h2>
+
+                    <div className="flex flex-col gap-16 w-full">
+                        <motion.div
+                            ref={ref}
+                            animate={controls}
+                            initial={{opacity: 0, y: 30}}
+                            transition={{duration: 0.8, ease: "easeOut"}}
+                            className="flex flex-col md:flex-row gap-6"
+                        >
+                            <div className="flex flex-col md:flex-row items-start gap-6 p-6 w-full">
+                                <div className="flex-1 text-left">
+                                    <h3 className="text-2xl font-semibold mb-4">默认终端</h3>
+                                    <p className="text-gray-400">
+                                        CoolPotOS 默认采用 os_terminal 终端环境
+                                    </p>
+                                    <br/>
+                                    <div className="flex items-center gap-2">
+                                        <Image width={20} height={20} src="/yes.svg" alt="YES"/>
+                                        <span className="logo-font text-white">自定义字体</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <Image width={20} height={20} src="/yes.svg" alt="YES"/>
+                                        <span className="text-white">根据屏幕分辨率调整字体大小</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <Image width={20} height={20} src="/yes.svg" alt="YES"/>
+                                        <span className="text-white">支持主题颜色更换</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <Image width={20} height={20} src="/yes.svg" alt="YES"/>
+                                        <span className="text-white">支持鼠标终端滚动</span>
+                                    </div>
+                                </div>
+                                <div className="md:w-[500px] w-full flex-shrink-0 self-start md:self-end">
+                                    <Image
+                                        src="/theme.png"
+                                        width={2879}
+                                        height={1799}
+                                        alt="项目截图 1"
+                                        className="w-full md:w-[500px] rounded-lg shadow-md object-cover"
+                                    />
+                                </div>
+                            </div>
+                        </motion.div>
+                        <VisibilityAnimation
+                            initial={{opacity: 0, y: 30}}
+                            animate={{opacity: 1, y: 0}}
+                            exit={{opacity: 0, y: 30}}
+                            transition={{duration: 0.8, ease: "easeOut"}}
+                        >
+                            <div className="flex flex-col md:flex-row items-start gap-6 w-full pl-0 pr-7">
+                                <Image
+                                    src="/process.png"
+                                    alt="项目截图 2"
+                                    width={1555}
+                                    height={184}
+                                    className="w-full md:w-[500px] rounded-lg shadow-md object-cover mr-auto -ml-4"
+                                />
+                                <div className="flex-1 text-left">
+                                    <h3 className="text-2xl font-semibold mb-4">进程模型</h3>
+                                    <p className="text-gray-400">
+                                        CoolPotOS 采用非常独特的进程处理机制
+                                    </p>
+                                    <br/>
+                                    <p>
+                                        当应用程序或内核调用kill_proc时并不会直接杀死进程,
+                                        <br/>
+                                        而是将其进程状态标记为死亡并放入释放队列中统一释放处理。
+                                        <br/>
+                                        进程内部包含的线程会被其调度的CPU核心的IDLE进程服务彻底释放资源,
+                                        待所有线程释放完毕则会释放进程公有资源
+                                    </p>
+                                    <p className="text-gray-400">
+                                        这么做的原因是为了解决CoolPotOS中存在很长一段时间的回收漏洞
+                                    </p>
+                                </div>
+                            </div>
+                        </VisibilityAnimation>
+                    </div>
+                </div>
+            </section>
+            <GitHubStats/>
+        </main>
+    );
 }
