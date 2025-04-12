@@ -1,5 +1,6 @@
 "use client"
 import Image from "next/image"
+import { motion } from "framer-motion"
 import CodeBlock from '@/components/CodeBlock'
 import Alert from '@/components/Alert'
 
@@ -104,23 +105,32 @@ export default function CommunityPage() {
     return (
         <main key="community-main" className="p-8 text-white pt-32">
             <div className="max-w-4xl mx-auto">
-                <h1 className="text-center text-3xl font-bold mb-8">社区贡献组织</h1>
+                <motion.h1 className="text-center text-3xl font-bold mb-8"
+                           initial={{opacity: 0, y: -30}}
+                           animate={{opacity: 1, y: 0}}
+                           transition={{duration: 0.8, ease: "easeOut"}}>
+                    社区贡献组织
+                </motion.h1>
 
                 <div className="grid md:grid-cols-3 gap-8 mb-12">
-                    {coreMembers.map((member) => (
-                        <div key={member.name}
-                             className="bg-neutral-900 p-6 rounded-xl border border-neutral-800 shadow-md text-center">
-                            <Image
-                                priority
-                                src={member.avatar}
-                                alt={member.name}
-                                width={96}
-                                height={96}
-                                className="rounded-full mx-auto mb-4 object-cover"
-                            />
-                            <h3 className="text-xl text-center font-semibold mb-2">{member.name}</h3>
-                            <p className="text-gray-400 text-sm text-center">{member.bio}</p>
-                        </div>
+                    {coreMembers.map((member,i) => (
+                        <motion.div key={member.name}
+                                    initial={{opacity: 0, y: -30}}
+                                    animate={{opacity: 1, y: 0}}
+                                    transition={{delay: 0.2 + i * 0.1, duration: 0.8, ease: "easeOut"}}>
+                            <div className="bg-neutral-900 p-6 rounded-xl border border-neutral-800 shadow-md text-center">
+                                <Image
+                                    priority
+                                    src={member.avatar}
+                                    alt={member.name}
+                                    width={96}
+                                    height={96}
+                                    className="rounded-full mx-auto mb-4 object-cover"
+                                />
+                                <h3 className="text-xl text-center font-semibold mb-2">{member.name}</h3>
+                                <p className="text-gray-400 text-sm text-center">{member.bio}</p>
+                            </div>
+                        </motion.div>
                     ))}
                 </div>
 
@@ -131,14 +141,16 @@ export default function CommunityPage() {
                 <div className="flex flex-wrap gap-4 justify-center">
                     {contributors_kernel.map((src, idx) => (
                         <a key={idx} href={src.url}>
-                            <Image
-                                priority
+                            <motion.img
                                 key={idx}
                                 src={src.avatar}
                                 alt={`贡献者 ${idx + 1}`}
                                 width={48}
                                 height={48}
                                 className="rounded-full border border-neutral-700"
+                                initial={{opacity: 0, y: -30}}
+                                animate={{opacity: 1, y: 0}}
+                                transition={{delay: 0.5 + idx * 0.01, duration: 0.8, ease: "easeOut"}}
                             />
                         </a>
                     ))}
@@ -151,14 +163,16 @@ export default function CommunityPage() {
                 <div className="flex flex-wrap gap-4 justify-center">
                     {contributors_docs.map((src, idx) => (
                         <a key={idx} href={src.url}>
-                            <Image
-                                priority
+                            <motion.img
                                 key={idx}
                                 src={src.avatar}
                                 alt={`贡献者 ${idx + 1}`}
                                 width={48}
                                 height={48}
                                 className="rounded-full border border-neutral-700"
+                                initial={{opacity: 0, y: -30}}
+                                animate={{opacity: 1, y: 0}}
+                                transition={{delay: 0.7 + idx * 0.01, duration: 0.8, ease: "easeOut"}}
                             />
                         </a>
                     ))}
@@ -172,14 +186,16 @@ export default function CommunityPage() {
                 <div className="flex flex-wrap gap-4 justify-center">
                     {contributors_other.map((src, idx) => (
                         <a key={idx} href={src.url}>
-                            <Image
-                                priority
+                            <motion.img
                                 key={idx}
                                 src={src.avatar}
                                 alt={`贡献者 ${idx + 1}`}
                                 width={48}
                                 height={48}
                                 className="rounded-full border border-neutral-700"
+                                initial={{opacity: 0, y: -30}}
+                                animate={{opacity: 1, y: 0}}
+                                transition={{delay: 1 + idx * 0.01, duration: 0.8, ease: "easeOut"}}
                             />
                         </a>
                     ))}
@@ -336,6 +352,9 @@ export default function CommunityPage() {
                                     className="my-8"
                                 />
                             </ul>
+                            <Alert type="warning" title="构建脚本注意">
+                                i386的贡献者编写并测试完代码后需将 xmake.lua 恢复原状, 防止干扰 x86_64 版本的构建
+                            </Alert>
                         </div>
                     </div>
                     <div className="max-w-4xl mx-auto p-3">
@@ -352,7 +371,7 @@ export default function CommunityPage() {
                             </ul>
                         </div>
                         <br/>
-                        <Alert type="info" title="架构编译">
+                        <Alert type="info" title="成为贡献者!">
                             拉取请求被合并后你就成为了 CoolPotOS 贡献者了, 根据贡献度会被记录到README或者文档里 :)
                         </Alert>
                     </div>

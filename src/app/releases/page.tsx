@@ -52,13 +52,13 @@ export default function ReleasePage() {
             )}
 
             <ul className="space-y-10">
-                {releases.map((release) => (
+                {releases.map((release,i) => (
                     <motion.li
                         key={release.id}
                         className="bg-neutral-900 border border-neutral-800 rounded-xl p-6 shadow-md"
                         initial={{opacity: 0, y: -30}}
                         animate={{opacity: 1, y: 0}}
-                        transition={{duration: 0.8}}
+                        transition={{delay: 0.2 + i * 0.1,duration: 0.8}}
                     >
                         <h2 className="text-xl font-semibold mb-2">
                             <a href={release.html_url} target="_blank" className="hover:underline text-blue-400">
