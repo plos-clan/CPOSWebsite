@@ -56,7 +56,7 @@ export default function CommunityPage() {
             avatar: "/avatars/a4_tacks.png",
             url: "https://github.com/A4-Tacks",
         }, {
-            avatar: "/avatars/microfish.png",
+            avatar: "/avatars/microfish.jpg",
             url: "https://github.com/FengHeting",
         }, {
             avatar: "/avatars/black.jpg",
@@ -70,6 +70,9 @@ export default function CommunityPage() {
         }, {
             avatar: "/avatars/minsecrus.jpg",
             url: "https://github.com/Minsecrus",
+        },{
+            avatar: "/avatars/linzhichen.png",
+            url: "https://github.com/linzhichen114",
         },
     ]
 
