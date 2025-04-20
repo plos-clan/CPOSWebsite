@@ -10,12 +10,12 @@ const NAV_LINKS = [
     { href: '/document', name: 'Document' },
 ];
 
-export default function Navbar() {
+export default function DocumentNavbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
         <nav
-            className="fixed top-3 left-2 right-2 z-50 backdrop-blur-lg bg-neutral-900/80 rounded-2xl shadow-md mx-3 mt-2 transition-all hover:shadow-lg">
+            className="fixed top-0 left-0 right-0 backdrop-blur-lg bg-neutral-900/80 shadow-md transition-all hover:shadow-lg">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
                     <div className="flex items-center space-x-3">

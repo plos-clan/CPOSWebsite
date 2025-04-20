@@ -22,6 +22,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname()
+  const isDocs = pathname.startsWith('/document')
+  if (isDocs) {
+    return children
+  }
   return (
     <html lang="en" className={`${logoFont.variable}`}>
     <body

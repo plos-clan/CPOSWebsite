@@ -1,10 +1,11 @@
 "use client"
 import Image from "next/image"
-import { motion, useAnimation } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import { useEffect } from "react"
+import {motion, useAnimation} from "framer-motion"
+import {useInView} from "react-intersection-observer"
+import {useEffect} from "react"
 import GitHubStats from "@/components/GitHubStats"
 import VisibilityAnimation from "@/components/VisibilityAnimation";
+import ScrollFadeByDirection from "@/components/ScrollFadeByDirection"
 
 export default function Home() {
     const controls = useAnimation()
@@ -15,9 +16,9 @@ export default function Home() {
 
     useEffect(() => {
         if (inView) {
-            controls.start({ opacity: 1, y: 0 })
+            controls.start({opacity: 1, y: 0})
         } else {
-            controls.start({ opacity: 0, y: 30 })
+            controls.start({opacity: 0, y: 30})
         }
     }, [inView, controls])
 
@@ -42,6 +43,11 @@ export default function Home() {
                               transition={{delay: 0.5, duration: 0.8}}>
                         A simple toy operating system
                     </motion.p>
+                    <ScrollFadeByDirection>
+                        <div className="w-full h-16 bg-pink-200 text-center text-white text-xl p-4">
+                            喵呜~我是滚动感知提示条～
+                        </div>
+                    </ScrollFadeByDirection>
                     <motion.a
                         href="https://github.com/plos-clan/CoolPotOS"
                         target="_blank"
@@ -88,6 +94,7 @@ export default function Home() {
                         </path>
                     </svg>
                 </div>
+
                 <div className="max-w-5xl mx-auto text-center">
                     <motion.h2 className="text-3xl logo-font tracking-wide font-bold mb-8"
                                initial={{opacity: 0, y: 10}}
