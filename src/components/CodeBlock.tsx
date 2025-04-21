@@ -17,6 +17,23 @@ const CodeBlock = ({ code, language = 'typescript', title = language, className 
     const [htmlContent, setHtmlContent] = useState('')
 
     useEffect(() => {
+        hljs.registerLanguage("ldscript", function (hljs) {
+            return {
+                name: "Linker Script",
+                keywords: {
+                    keyword: "SECTIONS MEMORY ENTRY PROVIDE KEEP ALIGN",
+                    literal: "TRUE FALSE",
+                    built_in: "__executable_start __bss_start _end"
+                },
+                contains: [
+                    hljs.C_LINE_COMMENT_MODE,
+                    hljs.C_BLOCK_COMMENT_MODE,
+                    hljs.QUOTE_STRING_MODE,
+                    hljs.NUMBER_MODE
+                ]
+            }
+        })
+
         const highlighted = hljs.highlight(code, {
             language,
             ignoreIllegals: true

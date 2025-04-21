@@ -18,14 +18,20 @@ const sidebarItems: Item[] = [
     {
         title: '内核模块开发',
         href: '/document/cpsdk',
+    },{
+        title: '应用程序开发',
+        href: '/document/appsdk',
     },
     {
-        title: '测试占位符',
+        title: '开发接口标准',
         href: '#',
         children: [
-            { title: '1', href: '/document' },
-            { title: '2', href: '/document' },
+            { title: '内核模块接口', href: '/document/krkmi' },
+            { title: '应用程序私有接口', href: '/document' },
         ],
+    },{
+        title: 'FAQ',
+        href: '/document/faq',
     },
 ]
 
