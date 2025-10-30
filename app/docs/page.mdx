@@ -1,0 +1,65 @@
+---
+title: 文档总览
+---
+
+import { Cards, Image } from 'nextra/components'
+import { cloneElement } from 'react'
+
+export default function MdxLayout(props) {
+    return cloneElement(props.children, {
+        components: {
+            img: Image
+        }
+    })
+}
+
+# 欢迎来到 CoolPotOS 文档
+
+CoolPotOS 是一个面向多平台的混合内核操作系统
+
+---
+
+<Cards num={2}>
+    <Cards.Card arrow title="Getting Started" href="/docs/getting_started">
+        <>
+            <section className="py-17 px-6 text-center">
+                <div className="max-w-5xl mx-auto text-center">
+                    <h2 className="text-3xl logo-font tracking-wide font-bold mb-8"
+                               initial={{opacity: 0, y: 10}}
+                               animate={{opacity: 1, y: 0}}
+                               transition={{delay: 1, duration: 0.8}}>
+                        Run & Build
+                    </h2>
+                </div>
+            </section>
+        </>
+    </Cards.Card>
+    <Cards.Card arrow title="Blog theme" href="/docs/api">
+        <>
+            <section className="py-17 px-6 text-center">
+                <div className="max-w-5xl mx-auto text-center">
+                    <h2 className="text-3xl logo-font tracking-wide font-bold mb-8"
+                        initial={{opacity: 0, y: 10}}
+                        animate={{opacity: 1, y: 0}}
+                        transition={{delay: 1, duration: 0.8}}>
+                        User Syscalls
+                    </h2>
+                </div>
+            </section>
+        </>
+    </Cards.Card>
+    <Cards.Card arrow title="Other" href="/docs/other">
+        <>
+            <section className="py-17 px-6 text-center">
+                <div className="max-w-5xl mx-auto text-center">
+                    <h2 className="text-3xl logo-font tracking-wide font-bold mb-8"
+                        initial={{opacity: 0, y: 10}}
+                        animate={{opacity: 1, y: 0}}
+                        transition={{delay: 1, duration: 0.8}}>
+                        Other Edition
+                    </h2>
+                </div>
+            </section>
+        </>
+    </Cards.Card>
+</Cards>

@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://cpos.plos-clan.org
+
+# Sitemaps
+Sitemap: https://cpos.plos-clan.org/sitemap.xml
