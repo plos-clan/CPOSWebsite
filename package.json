@@ -8,8 +8,7 @@
     "start": "next start",
     "postbuild": "next-sitemap && pagefind --site .next/server/app --output-path public/_pagefind",
     "lint": "eslint",
-    "cf-build": "bun run build && bunx @cloudflare/next-on-pages@1",
-    "cf-deploy": "bun run cf-build && wrangler pages deploy ./.vercel/output/static --project-name=YOUR-CF-PROJECT-NAME"
+    "cf-build": "bun run build && bunx @cloudflare/next-on-pages@1"
   },
   "dependencies": {
     "framer-motion": "^12.23.24",
