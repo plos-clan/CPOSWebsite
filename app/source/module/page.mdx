@@ -1,0 +1,80 @@
+---
+title: cpos module
+---
+# CoolPotOS Kernel Module
+
+自 `x64 0.1.1` 起, 由宏内核变更为混合内核, 支持内核模块.
+
+而在 `v0.3.5` - `9e0f775` 递交中, 由贡献者 `lihanrui2913` 大改内核模块加载器, 正式支持加载多个内核模块.
+
+## 内核模块编译格式
+
+文件名后缀必须为 `.km`, 因为内核仅会识别此后缀名的引导模块当作内核模块加载. \
+编译成 `nostdinc` 和 `nostdlib` 的 `ELF` 动态链接库, 并在 `limine.conf` 添加模块加载. \
+最后内核会自动装载模块.
+
+> 注: CP_Kernel 的内核模块不支持动态卸载, 一旦加载不可释放, 如想卸载模块, 更改引导器配置文件并重启内核
+
+内核模块必须编译为位置无关的动态链接库, 且仅在加载阶段进行重定向操作
+
+## 入口函数
+
+### dlmain
+
+分为 `dlmain` 与 `dlstart` 两个入口函数, 内核会率先调用每个模块的 `dlmain` 函数. \
+此时模块可以注册文件系统, 加载单任务驱动等.
+
+以下是函数示例定义
+
+```C
+__attribute__((used)) __attribute__((visibility("default"))) int dlmain(void) {
+    return EOK;
+}
+```
+
+> [!WARNING]
+>
+> 注意: `dlmain`的定义不可省略, 如没有此主函数, 内核模块会加载失败.
+
+### dlstart
+
+`dlstart` 函数会在内核基本加载完毕, 调度器被打开支持多任务工作的时候开始调用. \
+此时可以使用进程管理子系统提供的模块API.
+
+```C
+__attribute__((used)) __attribute__((visibility("default"))) int dlstart(void) {
+    return EOK;
+}
+```
+
+> [!WARNING]
+>
+> 注意: 如果 `dlmain` 返回了非0值, 代表该内核模块初始化失败, 故该模块的 `dlstart` 不会再被调用
+
+## API
+
+> CoolPotOS 内核模块支持导出函数以供其他模块进行调用, 但是你需要保证被依赖模块优先于其他模块加载 \
+> 调整引导配置文件的模块加载顺序即可
+
+> [!WARNING]
+>
+> 注意: 模块禁止循环依赖, 否则内核无法正确重定向两个互相引用的模块
+
+### cp_kernel.h
+
+与内核 `krlibc.h` 功能相似, 定义了诸多常用工具函数, 并包含了所需的类型定义
+
+### fs_subsystem.h
+
+与内核 `vfs.h` 功能相似, 包含了文件系统子系统的所有导出接口.
+
+### mem_subsystem.h
+
+与内核 `page.h` `frame.h` 功能相似, 包含了内存管理子系统所有导出接口.
+
+> `malloc` `free` 的函数定义在 cp_kernel.h 中, 不由内存管理子系统接口导出定义.
+
+## 兼容性
+
+部分子系统的函数定义与 NeoAetherOS 相似, 部分内核模块可以以很小的代价相互移植. \
+有关 NeoAetherOS 的内核模块定义, 详见 [NAOS Kernel Module](/source/module/naos)
