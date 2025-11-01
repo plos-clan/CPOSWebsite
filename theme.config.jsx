@@ -6,6 +6,9 @@ const config = {
     project: {
         link: 'https://github.com/plos-clan/CoolPotOS',
     },
+    feedback: {
+        link: 'https://github.com/plos-clan/CoolPotOS/issues/new?assignees=&labels=feedback&projects=&template=feedback.md&title=',
+    },
     docsRepositoryBase: 'https://github.com/plos-clan/CPOSWebsite/tree/main/app/docs',
     sidebar: {
         defaultMenuCollapseLevel: 1,

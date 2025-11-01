@@ -3,7 +3,7 @@ import {Banner, Head} from 'nextra/components'
 import {getPageMap} from 'nextra/page-map'
 import 'nextra-theme-docs/style.css'
 import {logoFont} from "@/app/components/Fonts"
-import Link from "next/link";
+import React from "react";
 
 export const metadata = {
     title: 'CoolPotOS Documentation',
@@ -19,7 +19,12 @@ const banner = <Banner storageKey="some-key">CoolPotOS 4.0 rebuild developing</B
 const navbar = (
     <Navbar logo={<b>CoolPotOS</b>} align={'left'}/>
 )
-const footer = <Footer>MIT {new Date().getFullYear()} © plos-clan.</Footer>
+
+const feedback = {
+    link: 'https://github.com/plos-clan/CoolPotOS/issues',
+    content: 'Question? Give us feedback',
+    labels: 'feedback'
+};
 
 export default async function RootLayout({children}: {
     children: React.ReactNode
@@ -40,6 +45,7 @@ export default async function RootLayout({children}: {
             navbar={navbar}
             pageMap={await getPageMap()}
             docsRepositoryBase="https://github.com/plos-clan"
+            feedback={feedback}
         >
             {children}
         </Layout>
