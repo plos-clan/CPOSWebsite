@@ -10,7 +10,7 @@ export default {
         title:
             <span className="flex items-center">
                 <StaticIcon
-                    src="/globe.svg"
+                    src="/wrench.svg"
                     alt="文档图标"
                     size={16}
                     style={{marginRight: '6px'}}
@@ -30,10 +30,30 @@ export default {
                 Source Code
             </span>
     },
+    sima: {
+        title:
+            <span className="flex items-center">
+                <StaticIcon
+                    src="/cog.svg"
+                    alt="文档图标"
+                    size={16}
+                    style={{marginRight: '6px'}}
+                />
+                SIMA
+            </span>
+    },
     '---': {
         type: 'separator'
     },
     contributors: {
-        title: "贡献"
+        title: <span className="flex items-center">
+                <StaticIcon
+                    src="/heart.svg"
+                    alt="文档图标"
+                    size={16}
+                    style={{marginRight: '6px'}}
+                />
+                贡献
+            </span>
     },
 }

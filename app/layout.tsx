@@ -31,7 +31,7 @@ const navbar = (
             Docs
         </Link>
         <Link
-            href={'/app/other/contributors/page.md'}
+            href={'/contributors'}
             className="text-gray-300 transition-colors font-medium text-sm px-3 py-1.5 rounded-lg hover:bg-neutral-800"
         >
             Contributors
