@@ -1,30 +1,33 @@
-export default {
+/**
+ * @type {import('nextra-theme-docs').DocsThemeConfig}
+ */
+const config = {
     logo: <b>CoolPotOS</b>,
     project: {
         link: 'https://github.com/plos-clan/CoolPotOS',
     },
-    docsRepositoryBase: 'https://github.com/plos-clan/CoolPotOS/tree/main/app/docs',
+    docsRepositoryBase: 'https://github.com/plos-clan/CPOSWebsite/tree/main/app/docs',
     sidebar: {
         defaultMenuCollapseLevel: 1,
         toggleButton: true,
     },
-    navigation: {
-        '/docs': [
+    navbar: {
+        items: [
             {
-                title: 'Getting Started',
-                items: [
-                    { title: 'Introduction', href: '/docs' },
-                    { title: 'Installation', href: '/docs/install' },
-                ],
+                text: 'GitHub',
+                link: 'https://github.com/plos-clan/CoolPotOS',
+                newWindow: true,
             },
             {
-                title: 'Development',
-                items: [
-                    { title: 'Kernel', href: '/docs/kernel' },
-                    { title: 'Scheduler', href: '/docs/scheduler' },
-                    { title: 'Contributors', href: '/docs/contributors' },
-                ],
+                text: 'Contributors',
+                link: '/contributors',
             },
+            {
+                text: 'Docs',
+                link: '/docs',
+            }
         ],
     },
 }
+
+export default config;

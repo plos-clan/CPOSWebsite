@@ -22,7 +22,8 @@ export const StaticIcon: React.FC<StaticIconProps> = ({
             alt={alt}
             width={size}
             height={size}
-            className={className}
+            className={`${className || ''}
+            dark:invert dark:grayscale`}
             style={{
                 marginRight: '6px',
                 verticalAlign: 'middle',

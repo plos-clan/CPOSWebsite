@@ -1,6 +1,6 @@
 'use client'
-import Link from 'next/link'
-import { Button } from 'nextra/components'
+import FadingFooter from '@/app/components/FadingFooter'
+import GitHubStats from  '@/app/components/GitHubStats'
 import {useInView} from "react-intersection-observer"
 import {useEffect} from "react"
 import Image from "next/image"
@@ -23,8 +23,14 @@ export default function HomePage() {
     }, [inView, controls])
 
     return (
-        <main className="min-h-screen bg-[#111111] text-white pt-16">
-            <section className="py-17 px-6 text-center">
+        <main className="min-h-screen pt-16 text-white"
+              style={{
+                  backgroundImage: "url('/footer.png')",
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundAttachment: 'fixed',
+              }}>
+            <section className="py-17 px-6 text-center bg-black">
                 <div className="max-w-3xl mx-auto">
                     <motion.img src="/coya_icon.png" alt="Logo"
                                 className="w-50 h-50 mx-auto mb-4"
@@ -149,6 +155,8 @@ export default function HomePage() {
                     </div>
                 </div>
             </section>
+            <GitHubStats/>
+            <FadingFooter/>
         </main>
     )
 }

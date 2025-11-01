@@ -17,26 +17,7 @@ export const metadata = {
 
 const banner = <Banner storageKey="some-key">CoolPotOS 4.0 rebuild developing</Banner>
 const navbar = (
-    <Navbar logo={<b>CoolPotOS</b>}>
-        <Link
-            href={'https://github.com/plos-clan/CoolPotOS'}
-            className="text-gray-300 transition-colors font-medium text-sm px-3 py-1.5 rounded-lg hover:bg-neutral-800"
-        >
-            GitHub
-        </Link>
-        <Link
-            href={'/docs'}
-            className="text-gray-300 transition-colors font-medium text-sm px-3 py-1.5 rounded-lg hover:bg-neutral-800"
-        >
-            Docs
-        </Link>
-        <Link
-            href={'/contributors'}
-            className="text-gray-300 transition-colors font-medium text-sm px-3 py-1.5 rounded-lg hover:bg-neutral-800"
-        >
-            Contributors
-        </Link>
-    </Navbar>
+    <Navbar logo={<b>CoolPotOS</b>} align={'left'}/>
 )
 const footer = <Footer>MIT {new Date().getFullYear()} © plos-clan.</Footer>
 
