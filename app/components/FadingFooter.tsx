@@ -21,7 +21,7 @@ const FadingFooter: React.FC = () => {
 
                 <div className="relative z-10 max-w-7xl mx-auto flex justify-end gap-6 text-sm">
                     <a href="#" className="text-gray-400 hover:text-white transition">
-                        MIT Licence - @2025 - 2026 by plos-clan
+                        MIT Licence - @2025 - 2026 by plos-clan | CoolPotOS NextJS Nextra
                     </a>
                     <a
                         href="https://docs.plos-clan.org"

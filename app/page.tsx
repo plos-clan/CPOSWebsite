@@ -155,6 +155,82 @@ export default function HomePage() {
                     </div>
                 </div>
             </section>
+            <section className="py-20 px-6 ">
+                <div className="max-w-4xl mx-auto">
+                    <motion.h2
+                        className="text-3xl logo-font tracking-wide font-bold text-center text-white mb-16"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7 }}
+                    >
+                        CoolPotOS TimeLine
+                    </motion.h2>
+
+                    <div className="relative">
+                        <div className="absolute left-4 md:left-1/2 transform md:-translate-x-0.5 h-full w-0.5 bg-gray-600 top-0"></div>
+                        {[
+                            {
+                                date: '2023 年',
+                                title: 'ShellXDOS',
+                                desc: 'UEFI shell 小程序 - 仅适用于 x86_64 平台',
+                            },
+                            {
+                                date: '2024 年初',
+                                title: 'CrashPowerDOS 386',
+                                desc: '适用于 i386 平台的宏内核操作系统, 第一次具备文件系统/多任务操作',
+                            },
+                            {
+                                date: '2024 年中',
+                                title: 'CrashPowerOS',
+                                desc: '适用于 i686 平台的宏内核操作系统, 具有 IDE 硬盘驱动 / fatfs文件系统等',
+                            },
+                            {
+                                date: '2025 - 1/12',
+                                title: 'CoolPotOS',
+                                desc: '开启 x86_64 分支, 正式面向现代化操作系统架构开发',
+                            },
+                            {
+                                date: '2024 - 9/23',
+                                title: '宣发委员会',
+                                desc: '在 Bilibili 平台进行第一次宣发, 获得 22.9W播放量 1.3W 点赞量 的优秀成果',
+                            },
+                            {
+                                date: '2025 - 5月至10月',
+                                title: '功能递增',
+                                desc: '增加 70+ POSIX 系统调用, 运行 gcc/lua/bash 等程序, 扩容生态, 支持EEVDF调度器等',
+                            },
+                            {
+                                date: '2025 - 10/16',
+                                title: '第三次项目重构',
+                                desc: '支持多平台架构, 优化部分冗余和高耦合性代码',
+                            },
+                        ].map((item, index) => (
+                            <motion.div
+                                key={index}
+                                className={`mb-12 flex ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col items-center relative`}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.15, duration: 0.6 }}
+                            >
+                                <div className="absolute left-0 md:left-1/2 md:transform md:-translate-x-1/2 w-8 h-8 rounded-full bg-white flex items-center justify-center z-10 shadow-md">
+                                    <div className="w-3 h-3 rounded-full bg-gray-800"></div>
+                                </div>
+                                <div
+                                    className={`w-full md:w-5/12 p-5 rounded-xl  backdrop-blur-sm text-white ${
+                                        index % 2 === 0 ? 'md:ml-16 md:text-right md:mr-0 mr-0 ml-12' : 'md:mr-16 md:text-left ml-12'
+                                    }`}
+                                >
+                                    <span className="text-sm text-gray-300 font-mono">{item.date}</span>
+                                    <h3 className="text-lg font-semibold mt-1">{item.title}</h3>
+                                    <p className="text-gray-400 mt-2 text-sm leading-relaxed">{item.desc}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
             <GitHubStats/>
             <FadingFooter/>
         </main>

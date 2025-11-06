@@ -74,6 +74,21 @@ __attribute__((used)) __attribute__((visibility("default"))) int dlstart(void) {
 
 > `malloc` `free` 的函数定义在 cp_kernel.h 中, 不由内存管理子系统接口导出定义.
 
+## 内核签名
+
+在 `CP_Kernel-x86_64-v0.4.39_(git:bdb0a6a)_{clang 21.1.4}` 版本后, 加入 ECC 模块密钥验证机制.
+
+在每次内核公钥重新生成后, 所有内核模块必须重新编译插入签名头. \
+cmake 脚本提供了自动化内核模块的签名方法.
+
+> 使用 python 脚本将签名追加到内核模块中.
+
+```cmake
+COMMAND python3 ${CMAKE_SOURCE_DIR}/tools/sign_module.py $<TARGET_FILE:内核模块构建代号> ${CMAKE_BINARY_DIR}/keys/module_signing_priv.pem
+```
+
+对于关闭内核的签名校验, 在 `metadata.h` 中有一个 `MODULE_CHECK` 宏用于控制编译流程决定是否启用签名校验功能.
+
 ## 兼容性
 
 部分子系统的函数定义与 NeoAetherOS 相似, 部分内核模块可以以很小的代价相互移植. \
