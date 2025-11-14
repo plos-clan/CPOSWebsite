@@ -53,7 +53,7 @@ export default {
                     size={16}
                     style={{marginRight: '6px'}}
                 />
-                贡献
+                Contributor
             </span>
     },
 }
