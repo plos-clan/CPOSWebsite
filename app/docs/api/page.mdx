@@ -1,58 +1,30 @@
 # API
 
+## POSIX syscall
+
 CoolPotOS 拥有 Linux 兼容层, 可以直接运行 Linux 下的二进制文件
 
 > 默认的 `cpos-rootfs` 仅提供 `musllibc` 构建出来的 linux 程序.
 
-## Syscalls
+> [!WARNING]
+>
+> CP_Kernel 不提供 `sys_brk` 系统调用, 所有用户态内存管理都由
+> `sys_mmap` `sys_mremap` `sys_munmap` 等实现
 
-以下列举出来所有已经实现的 linux 系统调用, 因各架构的调用号略有差异, 故不会按照固定顺序排序. \
-具体的系统调用号遵循 Linux 的各个平台编号.
+## POSIX filesystem
 
-### sys_open
+`CoolPotOS` 支持 `procfs` `pipefs` `devtmpfs` 等以实现部分 Linux 文件系统环境兼容.
 
-> 以指定路径打开一个文件句柄
+### procfs
 
-#### Parameters:
-* `argv0`: path - 绝对路径或进程工作目录的相对路径
+* `/proc/self` : 为当前进程的软连接, 指向当前进程的文件夹 (如 `/proc/12/`)
+    * `/proc/<pid>/cmdline` : 进程启动时候的完整命令行参数
+    * `/proc/<pid>/maps` : 进程内存布局
+    * `/proc/<pid>/stat` : 进程状态
+* `/proc/interrupts` : 提供了所有CPU核心的IRQ中断请求的计数和类型
+* `/proc/filesystems` : 提供了 `CP_Kernel` 支持的文件系统
+* `/proc/mounts` : 提供挂载点信息
+* `/proc/cmdline` : 提供内核命令行参数
+* `/proc/kmsg` : 提供内核日志 (有关于内核日志, 详见 [终端会话子系统](/source#终端会话子系统))
 
-#### Returns:
 
-* `return`: 返回文件描述符表句柄索引
-    - `-EINVAL`: 路径指针为空
-    - `-ENOENT`: 找不到指定文件
-
-### sys_close
-
-> 关闭指定索引的文件句柄
-
-* `argv0`: fd - 文件句柄索引
-* `return`: 成功关闭
-  - `-EINVAL`: 文件句柄有误
-  - `-EBADF`: 文件句柄索引无效
-
-### sys_read
-
-> 读取一个文件句柄的内容到指定缓冲区
-
-* `argv0`: fd - 文件描述符表句柄索引
-* `argv1`: buffer - 读取缓冲区
-* `argv2`: size - 需要读取的长度
-* `return`: 返回读取的长度
-    - `-EINVAL`: 文件句柄索引异常或缓冲区地址有误
-    - `-EBADF`: 文件句柄索引无效
-    - `-EIO`: 读取出现问题
-    - `-EWOULDBLOCK`: PIPE管道禁止采用 `O_NONBLOCK` 标志
-
-### sys_write
-
-> 将缓冲区的内容写入文件句柄
-
-* `argv0`: fd - 文件描述符表句柄索引
-* `argv1`: buffer - 写入缓冲区
-* `argv2`: size - 需要写入的长度
-* `return`: 返回写入的长度
-  - `-EINVAL`: 文件句柄索引异常或缓冲区地址有误
-  - `-EBADF`: 文件句柄索引无效
-  - `-EIO`: 写入出现问题
-  - `-EWOULDBLOCK`: PIPE管道禁止采用 `O_NONBLOCK` 标志
