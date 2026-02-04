@@ -1,0 +1,16 @@
+[
+  {
+    "name": "CLimber-Rong",
+    "avatar": "https://github.com/CLimber-Rong.png",
+    "website": "https://github.com/CLimber-Rong",
+    "role": "Stamon",
+    "desc": "stamon 移植贡献"
+  },
+  {
+    "name": "Zeng Zhenjia",
+    "avatar": "https://github.com/zzjrabbit.png",
+    "website": "https://github.com/zzjrabbit",
+    "role": "Rust SDK",
+    "desc": "CPOS Rust 开发包编写"
+  }
+]

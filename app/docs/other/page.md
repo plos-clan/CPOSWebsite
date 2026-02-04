@@ -11,3 +11,8 @@
 ## 其他操作系统
 
 * MdrOS: 主仓库 `i386` 架构第二次重构版本的前身, `CP_Kernel` 内核的发行版之一.
+
+## 构建所需的仓库
+
+* SIMA 仓库 [Github - plos-clan/SIMA](https://github.com/plos-clan/SIMA)
+

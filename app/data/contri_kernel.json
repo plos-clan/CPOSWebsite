@@ -1,0 +1,106 @@
+[
+  {
+    "name": "A4-Tacks",
+    "avatar": "https://github.com/A4-Tacks.png",
+    "website": "https://github.com/A4-Tacks",
+    "role": "Build Script",
+    "desc": "构建脚本优化"
+  },
+  {
+    "name": "blurryrect & wenxuanjun",
+    "avatar": "https://github.com/wenxuanjun.png",
+    "website": "https://github.com/wenxuanjun",
+    "role": "Build System",
+    "desc": "构建系统迭代优化"
+  },
+  {
+    "name": "copi143",
+    "avatar": "https://github.com/copi143.png",
+    "website": "https://github.com/copi143",
+    "role": "Code Rule",
+    "desc": "代码风格优化与规范化命名"
+  },
+  {
+    "name": "FengHeting",
+    "avatar": "https://github.com/FengHeting.png",
+    "website": "https://github.com/FengHeting",
+    "role": "Driver",
+    "desc": "驱动与PCI优化"
+  },
+  {
+    "name": "lihanrui2913",
+    "avatar": "https://github.com/lihanrui2913.png",
+    "website": "https://github.com/lihanrui2913",
+    "role": "Module",
+    "desc": "内核模块加载优化"
+  },
+  {
+    "name": "limitcool",
+    "avatar": "https://github.com/limitcool.png",
+    "website": "https://github.com/limitcool",
+    "role": "Syscall",
+    "desc": "修正系统调用实现差异"
+  },
+  {
+    "name": "linzhichen114",
+    "avatar": "https://github.com/linzhichen114.png",
+    "website": "https://github.com/linzhichen114",
+    "role": "Build System",
+    "desc": "修复构建参数链接错误"
+  }, {
+    "name": "LY-Xiang",
+    "avatar": "https://github.com/LY-Xiang.png",
+    "website": "https://github.com/LY-Xiang",
+    "role": "Workflow",
+    "desc": "优化工作流"
+  },
+  {
+    "name": "Minsecrus",
+    "avatar": "https://github.com/Minsecrus.png",
+    "website": "https://github.com/Minsecrus",
+    "role": "Memory State",
+    "desc": "优化内存统计"
+  },
+  {
+    "name": "min0911Y",
+    "avatar": "https://github.com/min0911Y.png",
+    "website": "https://github.com/min0911Y",
+    "role": "File System",
+    "desc": "块设备驱动与文件系统贡献"
+  },
+  {
+    "name": "SegmentationFaultCD",
+    "avatar": "https://github.com/SegmentationFaultCD.png",
+    "website": "https://github.com/SegmentationFaultCD",
+    "role": "Memory Map",
+    "desc": "内存映射优化"
+  },
+  {
+    "name": "suhuajun-github",
+    "avatar": "https://github.com/suhuajun-github.png",
+    "website": "https://github.com/suhuajun-github",
+    "role": "Debug Test",
+    "desc": "内核调试与测试"
+  },
+  {
+    "name": "VinbeWan",
+    "avatar": "https://github.com/VinbeWan.png",
+    "website": "https://github.com/VinbeWan",
+    "role": "IIC Driver",
+    "desc": "IIC 驱动贡献"
+  },
+  {
+    "name": "xiaoyi1212",
+    "avatar": "https://github.com/xiaoyi1212.png",
+    "website": "https://github.com/xiaoyi1212",
+    "role": "Master",
+    "desc": "内核主开发者"
+  },
+  {
+    "name": "yuemingruoan",
+    "avatar": "https://github.com/yuemingruoan.png",
+    "website": "https://github.com/yuemingruoan",
+    "role": "Code Notes",
+    "desc": "内核注释补充"
+  }
+]

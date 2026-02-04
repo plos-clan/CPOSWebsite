@@ -1,0 +1,22 @@
+import { ContributorGrid } from '@/app/components/ContributorGrid.tsx';
+import kernel from '@/app/data/contri_kernel.json'
+import docs from  '@/app/data/contri_docs.json'
+import app from '@/app/data/contri_app.json'
+
+# 贡献者们
+
+该文档页面记录了对 `CoolPotOS` 及其扩展项目的所有贡献者, 包含开发/宣发/资金等贡献者.
+
+> 排名按照名称首字母顺序, 与贡献时间和贡献度无关.
+
+## 内核贡献者
+
+<ContributorGrid items={kernel}/>
+
+## 文档贡献者
+
+<ContributorGrid items={docs}/>
+
+## 软件生态贡献者
+
+<ContributorGrid items={app}/>
