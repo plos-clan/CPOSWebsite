@@ -1,34 +1,18 @@
-import React from 'react';
-import Image from 'next/image';
+import Image, { type ImageProps } from 'next/image'
 
-interface StaticIconProps {
-    src: string;
-    alt: string;
-    size?: number;
-    className?: string;
-    style?: React.CSSProperties;
+interface StaticIconProps extends Pick<ImageProps, 'src' | 'alt'> {
+    size?: number
+    className?: string
 }
 
-export const StaticIcon: React.FC<StaticIconProps> = ({
-                                                          src,
-                                                          alt,
-                                                          size = 16,
-                                                          className,
-                                                          style
-                                                      }) => {
+export function StaticIcon({ src, alt, size = 16, className = '' }: StaticIconProps) {
     return (
         <Image
             src={src}
             alt={alt}
             width={size}
             height={size}
-            className={`${className || ''}
-            dark:invert dark:grayscale`}
-            style={{
-                marginRight: '6px',
-                verticalAlign: 'middle',
-                ...style
-            }}
+            className={`mr-1.5 align-middle dark:grayscale dark:invert ${className}`.trim()}
         />
-    );
-};
+    )
+}

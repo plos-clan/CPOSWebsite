@@ -1,6 +1,6 @@
-import {StaticIcon} from '@/app/components/StaticIcon';
+import { StaticIcon } from '@/app/components/StaticIcon'
 
-export default {
+const meta = {
     index: {
         title: 'Home',
         type: 'page',
@@ -9,36 +9,21 @@ export default {
     docs: {
         title:
             <span className="flex items-center">
-                <StaticIcon
-                    src="/wrench.svg"
-                    alt="文档图标"
-                    size={16}
-                    style={{marginRight: '6px'}}
-                />
+                <StaticIcon src="/wrench.svg" alt="" />
                 CoolPotOS
             </span>,
     },
     source: {
         title:
             <span className="flex items-center">
-                <StaticIcon
-                    src="/book.svg"
-                    alt="文档图标"
-                    size={16}
-                    style={{marginRight: '6px'}}
-                />
+                <StaticIcon src="/book.svg" alt="" />
                 Source Code
             </span>
     },
     sima: {
         title:
             <span className="flex items-center">
-                <StaticIcon
-                    src="/cog.svg"
-                    alt="文档图标"
-                    size={16}
-                    style={{marginRight: '6px'}}
-                />
+                <StaticIcon src="/cog.svg" alt="" />
                 SIMA
             </span>
     },
@@ -46,14 +31,12 @@ export default {
         type: 'separator'
     },
     contributors: {
-        title: <span className="flex items-center">
-                <StaticIcon
-                    src="/heart.svg"
-                    alt="文档图标"
-                    size={16}
-                    style={{marginRight: '6px'}}
-                />
+        title:
+            <span className="flex items-center">
+                <StaticIcon src="/heart.svg" alt="" />
                 Contributor
             </span>
-    },
+    }
 }
+
+export default meta

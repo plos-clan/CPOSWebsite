@@ -1,13 +1,17 @@
-import {Footer, Layout, Navbar} from 'nextra-theme-docs'
-import {Banner, Head} from 'nextra/components'
-import {getPageMap} from 'nextra/page-map'
+import type { Metadata } from 'next'
+import type { ReactNode } from 'react'
+import { Layout, Navbar } from 'nextra-theme-docs'
+import { Banner } from 'nextra/components'
+import { getPageMap } from 'nextra/page-map'
 import 'nextra-theme-docs/style.css'
-import {logoFont} from "@/app/components/Fonts"
-import React from "react";
+import './globals.css'
+import { logoFont } from '@/app/components/Fonts'
+import { siteConfig } from '@/app/site'
 
-export const metadata = {
-    title: 'CoolPotOS Documentation',
-    description: 'CoolPotOS 4.0 rebuild — official documentation site.',
+export const metadata: Metadata = {
+    metadataBase: new URL(siteConfig.url),
+    title: `${siteConfig.name} Documentation`,
+    description: siteConfig.description,
     icons: {
         icon: '/icon.png',
         shortcut: '/icon.png',
@@ -15,41 +19,38 @@ export const metadata = {
     },
 }
 
-const banner = <Banner storageKey="some-key">CoolPotOS 4.0 rebuild developing</Banner>
+const banner = <Banner storageKey="cpos-development-banner">CoolPotOS 4.0 rebuild developing</Banner>
 const navbar = (
-    <Navbar logo={<b>CoolPotOS</b>} align={'left'}/>
+    <Navbar logo={<b>{siteConfig.name}</b>} align="left" />
 )
 
 const feedback = {
-    link: 'https://github.com/plos-clan/CoolPotOS/issues',
+    link: `${siteConfig.repository.url}/issues`,
     content: 'Question? Give us feedback',
-    labels: 'feedback'
-};
+    labels: 'feedback',
+}
 
-export default async function RootLayout({children}: {
-    children: React.ReactNode
+export default async function RootLayout({ children }: {
+    children: ReactNode
 }) {
     return (
         <html
-            lang="cn"
+            lang="zh-CN"
             dir="ltr"
             suppressHydrationWarning
-            className={`${logoFont.variable}`}
+            className={logoFont.variable}
         >
-        <Head>
-            <link rel="icon" href={'icon.png'}/>
-        </Head>
-        <body>
-        <Layout
-            banner={banner}
-            navbar={navbar}
-            pageMap={await getPageMap()}
-            docsRepositoryBase="https://github.com/plos-clan"
-            feedback={feedback}
-        >
-            {children}
-        </Layout>
-        </body>
+            <body>
+                <Layout
+                    banner={banner}
+                    navbar={navbar}
+                    pageMap={await getPageMap()}
+                    docsRepositoryBase={siteConfig.docsRepository}
+                    feedback={feedback}
+                >
+                    {children}
+                </Layout>
+            </body>
         </html>
     )
 }

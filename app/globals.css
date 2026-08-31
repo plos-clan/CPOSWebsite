@@ -1,44 +1,5 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-:root {
-    --theme-bg-body: #ffffff; /* 主背景色 */
-    --theme-bg-secondary: #f3f4f6; /* 次级背景色 (浅灰色) */
-    --theme-text-primary: #171717; /* 主要文字色 */
-    --theme-text-secondary: #4b5563; /* 次级文字色 */
-    --theme-border-color: #e5e7eb; /* 边框色 */
-    --theme-card-bg: #ffffff; /* 卡片背景色 */
-    --theme-primary-button-bg: #8f8f8f;
-}
-
-@media (color-scheme: dark) {
-    :root {
-        --theme-bg-body: #111111; /* 主背景色 (深黑) */
-        --theme-bg-secondary: #222222; /* 次级背景色 (深灰) */
-        --theme-text-primary: #ededed; /* 主要文字色 (浅白) */
-        --theme-text-secondary: #9ca3af; /* 次级文字色 (中灰) */
-        --theme-border-color: #374151; /* 边框色 */
-        --theme-card-bg: #1f1f1f; /* 卡片背景色 */
-        --theme-primary-button-bg: #1f2937; /* 示例：深色按钮 */
-    }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.logo-font {
-  font-family: var(--font-coolpot);
-}
-
-.image-rendering-pixel {
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
+  --font-logo: var(--font-coolpot);
 }

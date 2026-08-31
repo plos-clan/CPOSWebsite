@@ -1,33 +1,25 @@
-import type { MetadataRoute } from 'next';
+import type { MetadataRoute } from 'next'
+import type { PageMapItem } from 'nextra'
+import { getPageMap } from 'nextra/page-map'
+import { siteConfig } from '@/app/site'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://cpos.plos-clan.org';
+export const dynamic = 'force-static'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-    const baseRoutes: MetadataRoute.Sitemap = [
-        {
-            url: BASE_URL,
-            lastModified: new Date(),
-            changeFrequency: 'daily',
-            priority: 1.0,
-        },
-        {
-            url: `${BASE_URL}/`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.9,
-        },
-    ];
+function collectRoutes(items: PageMapItem[]): string[] {
+    return items.flatMap((item) => {
+        if ('children' in item) return collectRoutes(item.children)
+        return 'route' in item ? [item.route] : []
+    })
+}
 
-    const docPages: MetadataRoute.Sitemap = [
-        '/source',
-        '/docs',
-        "/contributors",
-    ].map((slug) => ({
-        url: `${BASE_URL}${slug}`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly',
-        priority: 0.7,
-    }));
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+    const routes = new Set(['/', ...collectRoutes(await getPageMap())])
+    const lastModified = new Date()
 
-    return [...baseRoutes, ...docPages];
+    return Array.from(routes, (route) => ({
+        url: new URL(route, siteConfig.url).toString(),
+        lastModified,
+        changeFrequency: 'weekly' as const,
+        priority: route === '/' ? 1 : 0.7,
+    }))
 }
